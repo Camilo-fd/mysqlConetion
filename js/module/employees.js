@@ -11,6 +11,6 @@ export const  getEmployeesBoss = async () => {
 }
 
 export const  getAllEmployeesOfficeWork = async () => {
-    const [results] = await connection.query(`select lastName, employeeNumber, reportsTo, jobTitle from employees WHERE reportsTo is not null;`);
+    const [results] = await connection.query(`select employeeNumber, lastName, firstName, officeCode, city from employees inner join offices using (officeCode) order by employeeNumber`);
     return results;
 }

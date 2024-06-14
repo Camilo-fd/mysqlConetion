@@ -14,3 +14,8 @@ export const getNameAmountProduct = async () => {
     const [results] = await connection.query(`SELECT productName,  COUNT(*) FROM products GROUP BY productName;`);
     return results;
 }
+
+export const getProductBuyElderlyFive = async () => {
+    const [results] = await connection.query(`select productCode,  productName, productLine, buyPrice from products where buyPrice > 50; `);
+    return results;
+}
